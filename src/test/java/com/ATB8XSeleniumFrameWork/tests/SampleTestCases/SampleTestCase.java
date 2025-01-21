@@ -1,4 +1,4 @@
-package com.ATB8XSeleniumFrameWork.tests;
+package com.ATB8XSeleniumFrameWork.tests.SampleTestCases;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
