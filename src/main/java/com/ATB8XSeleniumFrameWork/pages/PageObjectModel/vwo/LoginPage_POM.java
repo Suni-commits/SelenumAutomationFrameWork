@@ -1,9 +1,11 @@
-package com.ATB8XSeleniumFrameWork.pages.PageObjectModel;
+package com.ATB8XSeleniumFrameWork.pages.PageObjectModel.vwo;
 
+import com.ATB8XSeleniumFrameWork.Utils.PropertiesReader;
+import com.ATB8XSeleniumFrameWork.base.CommonToAllPages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage_POM {
+public class LoginPage_POM extends CommonToAllPages {
 
     WebDriver driver;
 // default constructor
@@ -21,9 +23,10 @@ public class LoginPage_POM {
     // Step2 : Page Actions
 
     public String logintoVWOappInvaliCreds(String user,String pwd){
-        driver.findElement(username).sendKeys(user);
-        driver.findElement(password).sendKeys(pwd);
-        driver.findElement(signButton).click();
+        driver.get(PropertiesReader.readKey("url"));
+        enterInput(username,user);
+        enterInput(password,pwd);
+        clickElement(signButton);
 
         try {
             Thread.sleep(3000);
@@ -34,6 +37,19 @@ public class LoginPage_POM {
         String error_message_text=driver.findElement(error_message).getText();
 
         return error_message_text;
+    }
+
+    public void LoginVWOValidCreds(String user, String pwd){
+        driver.get(PropertiesReader.readKey("url"));
+        enterInput(username,user);
+        enterInput(password,pwd);
+        clickElement(signButton);
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
